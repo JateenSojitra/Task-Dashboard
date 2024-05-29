@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* .create-task-box {
+    height: 100vh;
+} */
+
+/* .progress-task-box {
+    height: 100vh;
+} */
+
+.card {
+    background-color: white;
+    border-radius: 12px 12px 12px 12px;
+    box-shadow: -1px 2px 11px -4px #cdd4e7;
+    display: flex;
+    margin: 4px;
+    /* position: relative; */
+    text-align: center;
+    height: calc(100vh - 110px) !important;
+    /* padding: 0 5px 0 5px; */
+}
+
+.label-form-control {
+    color: black !important;
+    display: block !important;
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 2px !important;
+    width: auto !important;
+}
+
+.rs-modal-header-close,
+.rs-btn-close {
+    background: #FAEAEB !important;
+    border-radius: 50% 50% 50% 50% !important;
+    height: 28px !important;
+    padding: 9px !important;
+    text-align: center !important;
+    transition: all .5s !important;
+    width: 28px !important;
+}
+
+.rs-modal-title {
+    color: #072f54 !important;
+    display: block !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    width: 100%;
+}
+
+.form-group,
+.form-group.validate-input,
+.validate-input {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.rs-modal-body {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    overflow: hidden !important;
+}

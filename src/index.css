@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.timerpicker{
+  width: 50%;
+  height: 35px;
+}
+.rs-picker-toggle rs-btn rs-btn-default{
+  color: rgb(223, 236, 40);
+}
+.rs-picker-toggle-textbox rs-picker-toggle-read-only{
+  color: brown;
+}
+.rs-picker-toggle-value{
+  color: brown;
+}
+.custom-select-picker{
+  color: brown;
+  width: 200px;
+  border-radius: 2px solid black;
+}
+
