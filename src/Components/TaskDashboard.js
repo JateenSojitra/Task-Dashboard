@@ -53,6 +53,39 @@ const TaskDashboard = () => {
                             </div>
                         </div>
                         <hr className='m-0' />
+                        <div className='table-responsive project-table table-bordered table-btn'>
+                            <table className='table'>
+                                <thead>
+                                    <tr>
+                                        <th>Task Title</th>
+                                        <th>Task Description</th>
+                                        <th>Task Hour</th>
+                                        <th>Minute</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Task Planning</td>
+                                        <td>Planning For Task DashBoard</td>
+                                        <td>1 Hr</td>
+                                        <td>30 Min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Task Planning</td>
+                                        <td>Planning For Task DashBoard</td>
+                                        <td>1 Hr</td>
+                                        <td>30 Min</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Task Planning</td>
+                                        <td>Planning For Task DashBoard</td>
+                                        <td>1 Hr</td>
+                                        <td>30 Min</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                     </div>
 
                     <div className='card col-md-12 border'>

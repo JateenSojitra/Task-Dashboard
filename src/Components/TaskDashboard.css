@@ -69,3 +69,32 @@
     position: relative;
     overflow: hidden !important;
 }
+
+.table-bordered{
+    border: #e1e1e1;
+    border-radius: 4px 4px 4px 4px;
+}
+.table-responsive{
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+}
+.table-responsive.project-table{
+    min-height: 200px;
+}
+.table-responsive.table-btn{
+    height: calc(100vh - 280px) !important
+}
+.table{
+    border-collapse: initial;
+    border-spacing: 0;
+    display: table;
+    background-color: #00000000;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+.table.table ,thead ,tr {
+    background-color: #f3f9ff;
+    border-color: #e1e1e1;
+    color: #072f54;
+}
