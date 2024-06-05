@@ -1,10 +1,16 @@
 const SETFORMDATA = "setFormData"
-// const SETTABLEDATA = "setTableData"
+const GRIDDATA = "setGridList"
 
-export const setProps =(info)=>{
+export const setProps =(payload)=>{
     return {
         type : SETFORMDATA,
-        info : info
+        payload
+    }
+}
+export const setGridList =(payload)=>{
+    return {
+        type : GRIDDATA,
+        payload
     }
 }
 

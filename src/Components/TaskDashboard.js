@@ -2,14 +2,21 @@ import React, { useState } from 'react'
 import "../Components/TaskDashboard.css"
 import { Accordion } from "react-bootstrap"
 import ButtonComponent from '../CommonComponents/ButtonComponent'
-// import CreateTaskpage from './CreateTaskpage'
-// import DisplayTask from './DisplayTask'
 import ModalComponents from '../CommonComponents/ModalComponents'
 import TextInput from '../CommonComponents/TextInput'
 import TextArea from '../CommonComponents/TextArea'
+import { connect } from "react-redux"
+// import {setGridList , setProps} from "../redux/action"
+import { useDispatch, useSelector } from "react-redux";
+import { setProps, setGridList } from '../redux/reducer'
+
 
 const TaskDashboard = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const initailsfromData = useSelector((state) => state.taskManager.formData);
+    const initailsData = useSelector((state) => state.taskManager.data);
+    console.log('initailsfromData :>> ', initailsfromData);
+    const dispatch = useDispatch();
     let statusArray = [
         {
             status: "In Progress",
@@ -29,6 +36,35 @@ const TaskDashboard = () => {
 
     ]
 
+    const setFormData = () => {
+        let fromData = {}
+        fromData['tasktitle'] = ''
+        fromData['taskdescription'] = ''
+        fromData['taskhour'] = 0
+        fromData['taskmintes'] = 0
+        dispatch(setProps(fromData))
+    }
+
+    const handleFormData = (type, key, value) => {
+        let fromData = { ...initailsfromData }
+        if (type === "number-input") {
+            fromData[key] = value
+        } else {
+            fromData[key] = value
+        }
+        dispatch(setProps(fromData))
+    }
+
+    const handleAddbuttonClick = () => {
+        let gridData = [...initailsData]
+        gridData.push(initailsfromData)
+        setIsOpen(false)
+        dispatch(setGridList(gridData))
+
+    }
+
+
+
     return (
         <>
             <div className='row'>
@@ -47,7 +83,7 @@ const TaskDashboard = () => {
                                         type="submit"
                                         className={"btn btn-primary "}
                                         ButtonName={"Create"}
-                                        onClick={() => setIsOpen(true)}
+                                        onClick={() => (setIsOpen(true), setFormData())}
                                     />
                                 </div>
                             </div>
@@ -64,24 +100,24 @@ const TaskDashboard = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Task Planning</td>
+                                    {
+                                        initailsData?.map((data) => {
+                                            return (
+                                                <tr>
+                                                    <>
+                                                        <td>{data.tasktitle}</td>
+                                                        <td>{data.taskdescription}</td>
+                                                        <td>{data.taskhour}</td>
+                                                        <td>{data.taskmintes}</td>
+                                                    </>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                    {/* <td>Task Planning</td>
                                         <td>Planning For Task DashBoard</td>
                                         <td>1 Hr</td>
-                                        <td>30 Min</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Task Planning</td>
-                                        <td>Planning For Task DashBoard</td>
-                                        <td>1 Hr</td>
-                                        <td>30 Min</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Task Planning</td>
-                                        <td>Planning For Task DashBoard</td>
-                                        <td>1 Hr</td>
-                                        <td>30 Min</td>
-                                    </tr>
+                                        <td>30 Min</td> */}
                                 </tbody>
                             </table>
 
@@ -130,6 +166,8 @@ const TaskDashboard = () => {
                                             placeholder={"Enter Task Title"}
                                             required={false}
                                             disabled={false}
+                                            // value={}
+                                            onChange={(e) => handleFormData("input-text", "tasktitle", e.target.value)}
                                         />
                                     </div>
                                 </div>
@@ -144,6 +182,7 @@ const TaskDashboard = () => {
                                             placeholder={"Enter Task description"}
                                             required={false}
                                             disabled={false}
+                                            onChange={(e) => handleFormData("input-text", "taskdescription", e.target.value)}
                                         />
                                     </div>
                                 </div>
@@ -159,6 +198,7 @@ const TaskDashboard = () => {
                                                 placeholder={"Enter Hour"}
                                                 required={false}
                                                 disabled={false}
+                                                onChange={(e) => handleFormData("number-input", "taskhour", e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -173,6 +213,7 @@ const TaskDashboard = () => {
                                                 placeholder={"Enter Minute"}
                                                 required={false}
                                                 disabled={false}
+                                                onChange={(e) => handleFormData("number-input", "taskmintes", e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -184,7 +225,7 @@ const TaskDashboard = () => {
                     footer={
                         <>
                             <div className='d-flex justify-content-between'>
-                                <button type='submit' className='btn btn-primary mr-3'>
+                                <button type='submit' className='btn btn-primary mr-3' onClick={() => handleAddbuttonClick()}>
                                     Submit
                                 </button>
 
@@ -205,4 +246,21 @@ const TaskDashboard = () => {
     )
 }
 
+// const mapStateToProps =(state)=>({
+//     // const { formData , data } = ownState
+//     // return { formData  , data}
+//     ...state,
+//     // formData : state.formData,
+//     // data : state.data,
+// })
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//     setGridList: () => dispatch(setGridList()),
+//     setProps: () => dispatch(setProps()),
+//     }
+//   }
+
+// export default connect(mapStateToProps ,mapDispatchToProps)(TaskDashboard)
 export default TaskDashboard
+

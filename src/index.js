@@ -14,16 +14,27 @@ import { BrowserRouter } from 'react-router-dom'
 // import "../node_modules/rsuite/dist/rsuite.min.css"
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { configureStore } from "@reduxjs/toolkit";
+import {fromDataSlice} from "../src/redux/reducer"
 
-// const store = createStore()
+import reducer from './redux/reducer';
+
+// const store = createStore(reducer)
+const store = configureStore({
+  reducer: {
+    taskManager: fromDataSlice.reducer,
+  },
+});
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
     <App />
     </BrowserRouter>
+    </Provider>
     {/* <LoginView/> */}
   </React.StrictMode>
 );
